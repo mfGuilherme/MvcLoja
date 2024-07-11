@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MvcLoja.Models.Venda>
+
+@{
+    ViewData["Title"] = "Vendas";
+}
+
+<h1>Vendas</h1>
+
+<p>
+    <a class="btn-voltar" asp-action="Create">Criar novo</a>
+</p>
+<form asp-controller="Vendas" asp-action="Index">
+    <p>
+        Nome ou Produto: <input type="text" name="SearchString" />
+        <input type="submit" value="Pesquisar" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdutoID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorVenda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorTotal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClienteID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorVenda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorTotal)
+            </td>
+            <td>
+                    <a class="btn-voltar" asp-action="Edit" asp-route-id="@item.ID">Editar</a> |
+                    <a class="btn-voltar" asp-action="Details" asp-route-id="@item.ID">Detalhes</a> |
+                    <a class="btn-voltar" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
